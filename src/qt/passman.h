@@ -4,7 +4,6 @@
 #include <QDialog>
 
 #define HCOUNT 10000
-#define PASSLEN 9 // default length in random bytes
 #define PINLEN 4
 
 QT_BEGIN_NAMESPACE
@@ -20,17 +19,23 @@ public:
     ~PassMan();
 
 private:
-    int pin;
+    int pin,services;
     char digest[64],ph[64];
     Ui::PassMan *ui;
 public:
     void initialise();
+    void startup();
 public slots:
     void pw_entered();
+    void rand_entered();
     void pin_entered(QString);
     void service_chosen(int);
     void checkchange(int);
-    void clear();
+    void clean();
+    void create();
+    void add();
+    void remove();
+    void sure();
     void reset();
 };
 #endif // PASSMAN_H
