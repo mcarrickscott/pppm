@@ -24,10 +24,9 @@ typedef struct server {
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-static QString extra="kffjwpw9390fj2020";  // enter your own randomness here....
+static QString extra="hvwivr774whvhhws";  // enter your own randomness here....
 
 static server list[MAX];
-
 
 static void bubblesort(server list[], int number)
 {
@@ -174,7 +173,7 @@ void PassMan::rand_entered()
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream op(&file);
-        op <<  randstr;
+        op <<  ui->master->text();
         file.close();
         exit(0);
     }
@@ -469,7 +468,7 @@ void PassMan::startup()
     QFile file("rand.txt");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        randstr = file.readLine();
+        randstr = file.readLine()+extra;
         ui->secret->setText("Master");
         ui->master->setFocus();
         ui->master->setToolTip("Enter your Master Secret (and don't write it down anywhere!)");
