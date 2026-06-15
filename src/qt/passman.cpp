@@ -24,7 +24,8 @@ typedef struct server {
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-static QString extra="hvwivr774whvhhws";  // enter your own randomness here....
+static QString extra=" brazen monkey 6677";  // enter your own randomness here....
+static QString email="someone@somewhere.com"; // enter your default username here
 
 static server list[MAX];
 
@@ -327,6 +328,7 @@ void PassMan::create()
     ui->url->setEnabled(1); ui->url->setToolTip("Legit URL of service - don't go to phishing site!");
     ui->note->setEnabled(1);
     ui->username->setEnabled(1); ui->username->setToolTip("Enter Username (maybe email?)");
+    ui->username->setText(email);
     ui->policy->setEnabled(1);
 
     ui->policy->setText("2");  ui->policy->setToolTip("Select password policy to conform to");
