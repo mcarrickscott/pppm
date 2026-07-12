@@ -24,8 +24,8 @@ typedef struct server {
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-static QString extra="giso562994laaa;;i";  // enter your own randomness here....
-static QString email="mcarrickscott@gmail.com";
+static QString extra="fresh horse boars";  // enter your own randomness here....
+static QString email="yourname@yourisp.com";
 
 static server list[MAX];
 
