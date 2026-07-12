@@ -24,8 +24,8 @@ typedef struct server {
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-static QString extra=" brazen monkey 6677";  // enter your own randomness here....
-static QString email="someone@somewhere.com"; // enter your default username here
+static QString extra="giso562994laaa;;i";  // enter your own randomness here....
+static QString email="mcarrickscott@gmail.com";
 
 static server list[MAX];
 
@@ -131,6 +131,7 @@ static int notriple(char *b) {
 // Policy 1 - as above, length 10
 // Policy 2 - as above, length 12 except special character + not allowed
 // Policy 3 - as above, length 16 except special character + not allowed
+// Policy 4 - as above, Convert I to i and l to L
 
 static int policy(int type,char *b)
 {
@@ -145,6 +146,8 @@ static int policy(int type,char *b)
     {
         if (b[i]=='/') b[i]='!';
         if (type>1 && b[i]=='+') b[i]='$';
+        if (type>3 && b[i]=='I') b[i]='i';
+        if (type>3 && b[i]=='l') b[i]='L';
         if (isdigit(b[i])) {isd=1; continue;}
         if (islower(b[i])) {isl=1;  continue;}
         if (isupper(b[i])) {isu=1;  continue;}
@@ -331,7 +334,7 @@ void PassMan::create()
     ui->username->setText(email);
     ui->policy->setEnabled(1);
 
-    ui->policy->setText("2");  ui->policy->setToolTip("Select password policy to conform to");
+    ui->policy->setText("4");  ui->policy->setToolTip("Select password policy to conform to");
     ui->add->setEnabled(1); ui->add->setToolTip("Confirm service to be added or deleted");
     ui->master->setEnabled(0);
     ui->pin->setEnabled(0);
@@ -349,7 +352,7 @@ void PassMan::add()
     newone.service=ui->newservice->text();
     newone.username=ui->username->text();
     newone.policy_type=ui->policy->text().toInt();
-    if (newone.policy_type>3 || newone.policy_type<0) {
+    if (newone.policy_type>4 || newone.policy_type<0) {
         ui->policy->clear();
         return;
     }
