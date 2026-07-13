@@ -547,7 +547,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Create or delete service (for Website, Username see above)</string>
+      <string>Create or delete service (enter Website, Username above)</string>
      </property>
     </widget>
    </item>
