@@ -24,8 +24,8 @@ typedef struct server {
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-static QString extra="fresh horse boars";  // enter your own randomness here....
-static QString email="yourname@yourisp.com";
+//static QString extra="giso562994laaa;;i";  // enter your own randomness here....
+static QString email="";
 
 static server list[MAX];
 
@@ -169,15 +169,25 @@ PassMan::PassMan(QWidget *parent)
 
 QFont bigFont("Courier New", 16);
 
+// set label normal or bold
+void bold(QLabel *f,bool doit)
+{
+    QFont font = f->font();
+    if (doit) font.setBold(true);
+    else font.setBold(false);
+    f->setFont(font);
+}
+
 // super random secret
 void PassMan::rand_entered()
 {
-    randstr=ui->master->text()+extra;
+    randstr=ui->master->text();//+extra;
     QFile file("rand.txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream op(&file);
-        op <<  ui->master->text();
+        op <<  ui->master->text() << "\n";
+        op << ui->username->text();
         file.close();
         exit(0);
     }
@@ -198,8 +208,10 @@ void PassMan::pw_entered()
     for (int i=0;i<HCOUNT;i++) HASH_again(ph);
 
     ui->master->clear();
+    bold(ui->secret,false);
     ui->master->setDisabled(1);
 
+    bold(ui->label,true);
     ui->service->setCurrentIndex(0);
     ui->service->setEnabled(0);
     ui->service->setFocus();      // important to shift focus
@@ -221,6 +233,8 @@ void PassMan::service_chosen(int n)
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(list[n].username);//usernames[n]);
 
+    bold(ui->label,false);
+
     QByteArray ba=chosen.toLatin1();
     SHA3_init(&sh,SHA3_HASH512);
     for (i=0;i<ba.length();i++)
@@ -236,6 +250,8 @@ void PassMan::service_chosen(int n)
     ui->username->setText(list[n].username);//usernames[n]);
     ui->show->setEnabled(1);
     ui->remove->setEnabled(1);
+
+    bold(ui->label_pin,true);
 }
 
 void PassMan::pin_entered(QString text)
@@ -279,6 +295,9 @@ void PassMan::pin_entered(QString text)
     // push password onto Clipboard
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(b64);
+
+    bold(ui->label_pin,false);
+    bold(ui->label,true);
 
     ui->service->setCurrentIndex(0);
     ui->url->clear();
@@ -339,7 +358,11 @@ void PassMan::create()
     ui->master->setEnabled(0);
     ui->pin->setEnabled(0);
     ui->create->setEnabled(0);
-
+    bold(ui->label_user,true);
+    bold(ui->label_url,true);
+    bold(ui->label_new,true);
+    bold(ui->label,false);
+    bold(ui->secret,false);
 }
 
 void PassMan::add()
@@ -380,6 +403,9 @@ void PassMan::add()
     ui->username->clear();
     ui->policy->clear();
     ui->add->setEnabled(0);
+    bold(ui->label_user,false);
+    bold(ui->label_url,false);
+    bold(ui->label_new,false);
     reset();
 }
 
@@ -389,6 +415,7 @@ void PassMan::remove()
     ui->sure->setEnabled(1);
     ui->remove->setEnabled(0);
     ui->pin->setEnabled(0);
+    bold(ui->label_pin,false);
 }
 
 void PassMan::sure()
@@ -456,6 +483,13 @@ void PassMan::reset()
     ui->note->setEnabled(0);
     ui->master->setEnabled(1);
     ui->master->setFocus();
+
+    bold(ui->label,false);
+    bold(ui->secret,true);
+    bold(ui->label_pin,false);
+    bold(ui->label_user,false);
+    bold(ui->label_url,false);
+    bold(ui->label_new,false);
 }
 
 void PassMan::startup()
@@ -473,15 +507,22 @@ void PassMan::startup()
     QFile file("rand.txt");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        randstr = file.readLine()+extra;
+        randstr = file.readLine().trimmed();
+        //qDebug() << randstr;
+        email = file.readLine().trimmed();
         ui->secret->setText("Master");
+        bold(ui->secret,true);
         ui->master->setFocus();
         ui->master->setToolTip("Enter your Master Secret (and don't write it down anywhere!)");
         entered=true;
         file.close();
     } else {  // application has not been initialised - enter fixed long secret
         entered=false;
+        ui->username->setEnabled(1);
         ui->secret->setText("Random");
+
+        bold(ui->secret,true);
+        bold(ui->label_user,true);
         ui->master->setToolTip("Enter long random string (and write it down somewhere!). Then restart program");
         connect(ui->master, &QLineEdit::returnPressed, this, &PassMan::rand_entered);
     }
@@ -491,6 +532,7 @@ void PassMan::initialise()
 {
     if (!entered) return;
     this->services=getlist();
+    ui->username->setEnabled(0);
     ui->pin->setEchoMode(QLineEdit::Password);
     ui->pin->setFont(bigFont);
     ui->pin->setMaxLength(4);

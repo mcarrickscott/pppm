@@ -109,7 +109,7 @@
     </widget>
    </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="label_url">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -183,7 +183,7 @@
     </widget>
    </item>
    <item row="5" column="0">
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="label_user">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -193,6 +193,7 @@
      <property name="font">
       <font>
        <pointsize>13</pointsize>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -223,7 +224,7 @@
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label_pin">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -438,7 +439,7 @@
     </widget>
    </item>
    <item row="11" column="0">
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="label_new">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -533,7 +534,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="5">
+   <item row="9" column="0" colspan="4">
     <widget class="QLabel" name="label_4">
      <property name="maximumSize">
       <size>
@@ -547,7 +548,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Create (enter Website, Username above) or delete service</string>
+      <string>Create  or delete service </string>
      </property>
     </widget>
    </item>
