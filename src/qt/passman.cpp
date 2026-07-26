@@ -215,7 +215,7 @@ void PassMan::pw_entered()
     bold(ui->label,true);
  //   qDebug() << "made bold";
     ui->service->setCurrentIndex(0);
-    ui->service->setEnabled(0);
+    ui->service->setEnabled(1);
     ui->service->setFocus();      // important to shift focus
 
     ui->create->setDisabled(1);
