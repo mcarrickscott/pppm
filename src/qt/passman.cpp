@@ -196,6 +196,7 @@ void PassMan::rand_entered()
 void PassMan::pw_entered()
 {
     QString password=ui->master->text();
+    //qDebug() << "password entered";
 
     sha3 sh;
     SHA3_init(&sh,SHA3_HASH512);
@@ -212,6 +213,7 @@ void PassMan::pw_entered()
     ui->master->setDisabled(1);
 
     bold(ui->label,true);
+ //   qDebug() << "made bold";
     ui->service->setCurrentIndex(0);
     ui->service->setEnabled(0);
     ui->service->setFocus();      // important to shift focus
@@ -369,6 +371,15 @@ void PassMan::add()
 {
     if (ui->newservice->text().isEmpty() || ui->username->text().isEmpty()) return;
 
+    bool notnew=false;
+    for (int i=0;i<services;i++) {
+        if (list[i].service==ui->newservice->text()) {
+            notnew=true;
+            break;
+        }
+    }
+    if (notnew) return;
+
     server newone;
     newone.domain=ui->url->text();
     newone.note=ui->note->text();
@@ -406,6 +417,7 @@ void PassMan::add()
     bold(ui->label_user,false);
     bold(ui->label_url,false);
     bold(ui->label_new,false);
+    //qDebug() << "Add pressed reset";
     reset();
 }
 
@@ -452,7 +464,7 @@ void PassMan::sure()
         if (ui->service->itemText(i)==ui->newservice->text())
             ui->service->removeItem(i);
     }
-
+    //qDebug() << "Sure pressed reset";
     reset();
     services=number;
 }
@@ -461,7 +473,7 @@ void PassMan::reset()
 {
     clean();
     for (int i=0;i<64;i++) {digest[i]=0; ph[i]=0;}
-//    qDebug() << "Somebody pressed reset";
+    //qDebug() << "Somebody pressed reset";
     ui->url->clear();
     ui->note->clear();
     ui->username->clear();
@@ -520,7 +532,6 @@ void PassMan::startup()
         entered=false;
         ui->username->setEnabled(1);
         ui->secret->setText("Random");
-
         bold(ui->secret,true);
         bold(ui->label_user,true);
         ui->master->setToolTip("Enter long random string (and write it down somewhere!). Then restart program");
