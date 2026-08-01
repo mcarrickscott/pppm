@@ -55,9 +55,11 @@ static int getlist()
         file.close();
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return 0;  // open it again
     }
+
     int number=0;
     while (!file.atEnd() && number<MAX) {
         QString line = file.readLine();
+//qDebug() << "getlist " << line;
         QStringList tokens = line.split(",");
         list[number].username = tokens.at(0);
         list[number].service = tokens.at(1);

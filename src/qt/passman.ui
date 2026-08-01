@@ -153,7 +153,7 @@
     </widget>
    </item>
    <item row="6" column="1" colspan="4">
-    <widget class="QLineEdit" name="username">
+    <widget class="QLineEdit" name="note">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -333,7 +333,7 @@
     </widget>
    </item>
    <item row="5" column="1" colspan="4">
-    <widget class="QLineEdit" name="note">
+    <widget class="QLineEdit" name="username">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -432,7 +432,7 @@
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QLabel" name="label_user">
+    <widget class="QLabel" name="label_note">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -446,7 +446,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Username</string>
+      <string>Note</string>
      </property>
     </widget>
    </item>
@@ -508,7 +508,7 @@
     </widget>
    </item>
    <item row="5" column="0">
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="label_user">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -521,7 +521,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Note</string>
+      <string>Username</string>
      </property>
     </widget>
    </item>
