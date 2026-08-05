@@ -484,7 +484,7 @@ void PassMan::reset()
     ui->pin->clear();
     ui->show->setEnabled(0);
 
-    ui->create->setEnabled(1); ui->create->setToolTip("Create new URL/Username/Password combination");
+    ui->create->setEnabled(1);
     ui->sure->setEnabled(0);
     ui->newservice->clear();
     ui->newservice->setEnabled(0);
@@ -516,7 +516,7 @@ void PassMan::startup()
         myDir.mkpath(path);
     }
     QDir::setCurrent(path);
-
+    //ui->note->setText(path);
     //qDebug() << path;
     QFile file("rand.txt");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -567,6 +567,7 @@ void PassMan::initialise()
     ui->master->setFocus();
     ui->clean->setToolTip("Clear clip-board and all secret data");
     ui->create->setEnabled(1);
+    ui->create->setToolTip("Create password for Username/URL/Service");
 }
 
 PassMan::~PassMan()
