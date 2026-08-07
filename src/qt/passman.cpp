@@ -509,7 +509,7 @@ void PassMan::reset()
 void PassMan::startup()
 {
 // first set path to writeable storage
-    QString path = QStandardPaths::standardLocations( QStandardPaths::AppDataLocation ).value(0);
+    QString path = QStandardPaths::standardLocations( QStandardPaths::AppConfigLocation ).value(0);  // Somewhere local - NOT in the cloud!
 
     QDir myDir(path);
     if (!myDir.exists()) {
