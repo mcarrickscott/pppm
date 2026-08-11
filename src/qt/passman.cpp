@@ -134,6 +134,7 @@ static int notriple(char *b) {
 // Policy 2 - as above, length 12 except special character + not allowed
 // Policy 3 - as above, length 16 except special character + not allowed
 // Policy 4 - as above, Convert I to i and l to L
+// Policy 5 - as above but lengh 16
 
 static int policy(int type,char *b)
 {
@@ -142,7 +143,7 @@ static int policy(int type,char *b)
     isd=isl=isu=0;
     len=12;
     if (type==1) len=10;
-    if (type==3) len=16;
+    if (type==3 || type==5) len=16;
     b[len]='\0';
     for (i=0;i<len;i++)
     {
@@ -388,7 +389,7 @@ void PassMan::add()
     newone.service=ui->newservice->text();
     newone.username=ui->username->text();
     newone.policy_type=ui->policy->text().toInt();
-    if (newone.policy_type>4 || newone.policy_type<0) {
+    if (newone.policy_type>5 || newone.policy_type<0) {
         ui->policy->clear();
         return;
     }
