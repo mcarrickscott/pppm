@@ -18,13 +18,12 @@ typedef struct server {
     QString service;
     QString domain;
     QString note;
-    int policy_type;
-} server;
+    int policy_len;
 
+} server;
 
 static bool entered=false;
 static QString randstr="";  // long random secret
-//static QString extra="giso562994laaa;;i";  // enter your own randomness here....
 static QString email="";
 
 static server list[MAX];
@@ -65,7 +64,9 @@ static int getlist()
         list[number].service = tokens.at(1);
         list[number].domain = tokens.at(2);
         list[number].note = tokens.at(3);
-        list[number].policy_type = tokens.at(4).toInt();
+
+        list[number].policy_len = tokens.at(4).toInt();
+
         number++;
     }
     bubblesort(list,number);
@@ -136,21 +137,19 @@ static int notriple(char *b) {
 // Policy 4 - as above, Convert I to i and l to L
 // Policy 5 - as above but lengh 16
 
-static int policy(int type,char *b)
+// Length is 10 to 16
+static int policy(int len,char *b)
 {
-    int i,len,isd,isl,isu,gotone=0;
+    int i,isd,isl,isu,gotone=0;
     if (!isupper(b[0]) && !islower(b[0])) return 0;
     isd=isl=isu=0;
-    len=12;
-    if (type==1) len=10;
-    if (type==3 || type==5) len=16;
     b[len]='\0';
     for (i=0;i<len;i++)
     {
         if (b[i]=='/') b[i]='!';
-        if (type>1 && b[i]=='+') b[i]='$';
-        if (type>3 && b[i]=='I') b[i]='i';
-        if (type>3 && b[i]=='l') b[i]='L';
+        if (b[i]=='+') b[i]='$';
+        if (b[i]=='I') b[i]='i';
+        if (b[i]=='l') b[i]='L';
         if (isdigit(b[i])) {isd=1; continue;}
         if (islower(b[i])) {isl=1;  continue;}
         if (isupper(b[i])) {isu=1;  continue;}
@@ -159,6 +158,7 @@ static int policy(int type,char *b)
     if (isd && isl && isu && gotone && notriple(b)) return 1;
     return 0;
 }
+
 
 PassMan::PassMan(QWidget *parent)
     : QDialog(parent)
@@ -184,7 +184,7 @@ void bold(QLabel *f,bool doit)
 // super random secret
 void PassMan::rand_entered()
 {
-    randstr=ui->master->text();//+extra;
+    randstr=ui->master->text();
     QFile file("rand.txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
@@ -265,7 +265,8 @@ void PassMan::pin_entered(QString text)
     if (text.length()!=4) return;
 
     const int ipt=ui->service->currentIndex();
-    pt=list[ipt].policy_type;//   policy_type[ipt];
+    pt=list[ipt].policy_len;
+
     ui->pin->setDisabled(1);
     ui->service->setEnabled(1);
     pin=text.toInt();
@@ -358,7 +359,8 @@ void PassMan::create()
     ui->username->setText(email);
     ui->policy->setEnabled(1);
 
-    ui->policy->setText("4");  ui->policy->setToolTip("Select password policy to conform to");
+    ui->policy->setText("12");  ui->policy->setToolTip("Select password length");
+
     ui->add->setEnabled(1); ui->add->setToolTip("Confirm service to be added or deleted");
     ui->master->setEnabled(0);
     ui->pin->setEnabled(0);
@@ -384,12 +386,14 @@ void PassMan::add()
     if (notnew) return;
 
     server newone;
-    newone.domain=ui->url->text();
+    newone.domain=(ui->url->text()).toLower();
     newone.note=ui->note->text();
-    newone.service=ui->newservice->text();
+    newone.service=(ui->newservice->text()).toLower();
     newone.username=ui->username->text();
-    newone.policy_type=ui->policy->text().toInt();
-    if (newone.policy_type>5 || newone.policy_type<0) {
+
+    newone.policy_len=ui->policy->text().toInt();
+    if (newone.policy_len>16 || newone.policy_len<10) {
+
         ui->policy->clear();
         return;
     }
@@ -405,7 +409,7 @@ void PassMan::add()
  // add to list in memory
     list[services]=newone;
  // add to drop-down list
-    ui->service->addItem(ui->newservice->text());
+    ui->service->addItem((ui->newservice->text()).toLower());
     this->services+=1;
     ui->url->setEnabled(0);
     ui->note->setEnabled(0);
@@ -510,7 +514,7 @@ void PassMan::reset()
 void PassMan::startup()
 {
 // first set path to writeable storage
-    QString path = QStandardPaths::standardLocations( QStandardPaths::AppLocalDataLocation ).value(0);  // Somewhere local - NOT in the cloud!
+    QString path = QStandardPaths::standardLocations( QStandardPaths::AppLocalDataLocation ).value(0);  // Somewhere local - NOT in the cloud - ***********
 
     QDir myDir(path);
     if (!myDir.exists()) {
@@ -533,7 +537,7 @@ void PassMan::startup()
         file.close();
     } else {  // application has not been initialised - enter fixed long secret
         entered=false;
-        ui->username->setEnabled(1);
+        ui->username->setEnabled(1); ui->username->setToolTip("Enter default Username (maybe email?)");
         ui->secret->setText("Random");
         bold(ui->secret,true);
         bold(ui->label_user,true);

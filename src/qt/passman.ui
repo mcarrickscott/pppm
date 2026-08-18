@@ -17,44 +17,8 @@
    <string>MyPassMan</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="8" column="4">
-    <widget class="QCheckBox" name="show">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>80</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Show</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="3">
-    <widget class="QLineEdit" name="master">
-     <property name="maximumSize">
-      <size>
-       <width>250</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="secret">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_user">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -67,46 +31,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Master</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0">
-    <widget class="QPushButton" name="remove">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>64</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="2">
-    <widget class="QLabel" name="label_10">
-     <property name="maximumSize">
-      <size>
-       <width>60</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Policy</string>
+      <string>Username</string>
      </property>
     </widget>
    </item>
@@ -134,8 +59,8 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="label_new">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_url">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -148,132 +73,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Service</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" colspan="4">
-    <widget class="QLineEdit" name="note">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="5">
-    <widget class="Line" name="line">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="0">
-    <widget class="QPushButton" name="create">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>64</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::FocusPolicy::StrongFocus</enum>
-     </property>
-     <property name="text">
-      <string>New</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="4">
-    <widget class="QPushButton" name="sure">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>64</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Sure?</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="1" colspan="4">
-    <widget class="QLineEdit" name="newservice">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>250</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="4">
-    <widget class="QPushButton" name="add">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>100</width>
-       <height>36</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Add</string>
+      <string>Website</string>
      </property>
     </widget>
    </item>
@@ -293,6 +93,67 @@
      </property>
      <property name="text">
       <string>My Password Manager</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <widget class="QPushButton" name="remove">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>64</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" colspan="2">
+    <widget class="QLineEdit" name="pin">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>80</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maxLength">
+      <number>4</number>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="1" colspan="4">
+    <widget class="QLineEdit" name="newservice">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>250</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
      </property>
     </widget>
    </item>
@@ -332,11 +193,21 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1" colspan="4">
-    <widget class="QLineEdit" name="url">
-     <property name="enabled">
-      <bool>false</bool>
+   <item row="9" column="0" colspan="5">
+    <widget class="Line" name="line">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>36</height>
+      </size>
      </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_note">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -348,6 +219,27 @@
        <pointsize>13</pointsize>
        <bold>false</bold>
       </font>
+     </property>
+     <property name="text">
+      <string>Note</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="4">
+    <widget class="QPushButton" name="clean">
+     <property name="maximumSize">
+      <size>
+       <width>64</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string> Clear </string>
      </property>
     </widget>
    </item>
@@ -368,12 +260,30 @@
       </font>
      </property>
      <property name="maxLength">
-      <number>1</number>
+      <number>2</number>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="4">
-    <widget class="QLineEdit" name="username">
+   <item row="13" column="0">
+    <widget class="QLabel" name="label_new">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Service</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="4">
+    <widget class="QLineEdit" name="note">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -389,64 +299,8 @@
        <bold>false</bold>
       </font>
      </property>
-    </widget>
-   </item>
-   <item row="7" column="1" colspan="2">
-    <widget class="QLineEdit" name="pin">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>80</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maxLength">
-      <number>4</number>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>24</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Password</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_note">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Note</string>
+     <property name="toolTip">
+      <string/>
      </property>
     </widget>
    </item>
@@ -471,8 +325,32 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="4">
-    <widget class="QPushButton" name="clean">
+   <item row="8" column="4">
+    <widget class="QCheckBox" name="show">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>80</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Show</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="4">
+    <widget class="QPushButton" name="sure">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="maximumSize">
       <size>
        <width>64</width>
@@ -485,12 +363,12 @@
       </font>
      </property>
      <property name="text">
-      <string> Clear </string>
+      <string>Sure?</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_user">
+   <item row="2" column="0">
+    <widget class="QLabel" name="secret">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -503,12 +381,69 @@
       </font>
      </property>
      <property name="text">
-      <string>Username</string>
+      <string>Master</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_url">
+   <item row="11" column="4">
+    <widget class="QPushButton" name="add">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="3">
+    <widget class="QLineEdit" name="master">
+     <property name="maximumSize">
+      <size>
+       <width>250</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="4">
+    <widget class="QLineEdit" name="username">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -518,10 +453,38 @@
      <property name="font">
       <font>
        <pointsize>13</pointsize>
+       <bold>false</bold>
       </font>
      </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QPushButton" name="create">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>64</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::FocusPolicy::StrongFocus</enum>
+     </property>
      <property name="text">
-      <string>Website</string>
+      <string>New</string>
      </property>
     </widget>
    </item>
@@ -540,6 +503,43 @@
      </property>
      <property name="text">
       <string>Reset</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="4">
+    <widget class="QLineEdit" name="url">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="2">
+    <widget class="QLabel" name="label_10">
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Length</string>
      </property>
     </widget>
    </item>

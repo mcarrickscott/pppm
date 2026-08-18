@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#define HCOUNT 10000
+#define HCOUNT 20000
 #define PINLEN 4
 
 QT_BEGIN_NAMESPACE
