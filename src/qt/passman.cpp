@@ -50,7 +50,7 @@ static int getlist()
     { // create the file and initialise it
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return 0;
         QTextStream stream(&file);
-        stream << ",None,,,0\n";
+        stream << ",none,,,0\n";
         file.close();
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return 0;  // open it again
     }
