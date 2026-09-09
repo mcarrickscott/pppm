@@ -376,9 +376,10 @@ void PassMan::add()
 {
     if (ui->newservice->text().isEmpty() || ui->username->text().isEmpty()) return;
 
+    QString service=ui->newservice->text().toLower().simplified(); // strip out leading/trailing/extra spaces
     bool notnew=false;
     for (int i=0;i<services;i++) {
-        if (list[i].service==ui->newservice->text()) {
+        if (list[i].service==service) {
             notnew=true;
             break;
         }
@@ -388,7 +389,7 @@ void PassMan::add()
     server newone;
     newone.domain=(ui->url->text()).toLower();
     newone.note=ui->note->text();
-    newone.service=(ui->newservice->text()).toLower();
+    newone.service=service;
     newone.username=ui->username->text();
 
     newone.policy_len=ui->policy->text().toInt();
@@ -409,7 +410,7 @@ void PassMan::add()
  // add to list in memory
     list[services]=newone;
  // add to drop-down list
-    ui->service->addItem((ui->newservice->text()).toLower());
+    ui->service->addItem(service);
     this->services+=1;
     ui->url->setEnabled(0);
     ui->note->setEnabled(0);
