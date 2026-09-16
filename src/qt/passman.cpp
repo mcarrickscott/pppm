@@ -374,9 +374,12 @@ void PassMan::create()
 
 void PassMan::add()
 {
-    if (ui->newservice->text().isEmpty() || ui->username->text().isEmpty()) return;
+    if (ui->username->text().isEmpty()) return;
 
-    QString service=ui->newservice->text().toLower().simplified(); // strip out leading/trailing/extra spaces
+    QString service=ui->newservice->text().toLower().simplified().remove(','); // strip out leading/trailing/extra spaces. Remove commas.
+
+    if (service.isEmpty()) return;
+
     bool notnew=false;
     for (int i=0;i<services;i++) {
         if (list[i].service==service) {
@@ -387,14 +390,13 @@ void PassMan::add()
     if (notnew) return;
 
     server newone;
-    newone.domain=(ui->url->text()).toLower();
-    newone.note=ui->note->text();
+    newone.domain=(ui->url->text()).toLower().remove(',');
+    newone.note=ui->note->text().remove(',');
     newone.service=service;
-    newone.username=ui->username->text();
+    newone.username=ui->username->text().remove(',');
 
     newone.policy_len=ui->policy->text().toInt();
     if (newone.policy_len>16 || newone.policy_len<10) {
-
         ui->policy->clear();
         return;
     }
