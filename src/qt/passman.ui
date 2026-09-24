@@ -57,6 +57,9 @@
        <pointsize>13</pointsize>
       </font>
      </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+     </property>
     </widget>
    </item>
    <item row="5" column="0">
@@ -134,6 +137,9 @@
        <height>30</height>
       </size>
      </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+     </property>
      <property name="maxLength">
       <number>4</number>
      </property>
@@ -154,6 +160,9 @@
       <font>
        <pointsize>13</pointsize>
       </font>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
      </property>
     </widget>
    </item>
@@ -299,6 +308,9 @@
        <bold>false</bold>
       </font>
      </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+     </property>
      <property name="toolTip">
       <string/>
      </property>
@@ -319,6 +331,9 @@
       <font>
        <pointsize>13</pointsize>
       </font>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
      </property>
      <property name="currentIndex">
       <number>-1</number>
@@ -419,6 +434,9 @@
        <pointsize>13</pointsize>
       </font>
      </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+     </property>
     </widget>
    </item>
    <item row="8" column="0">
@@ -455,6 +473,9 @@
        <pointsize>13</pointsize>
        <bold>false</bold>
       </font>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
      </property>
     </widget>
    </item>
@@ -522,6 +543,9 @@
        <pointsize>13</pointsize>
        <bold>false</bold>
       </font>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
      </property>
     </widget>
    </item>

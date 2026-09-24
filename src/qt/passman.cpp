@@ -128,14 +128,6 @@ static int notriple(char *b) {
 // at least one special, one upper case, one lower case, one number
 // must start with a letter
 // must not contain triple repeat like aaa
-// User modification may be needed here for new policies **********************************************
-
-// Policy 0 - as above, length 12
-// Policy 1 - as above, length 10
-// Policy 2 - as above, length 12 except special character + not allowed
-// Policy 3 - as above, length 16 except special character + not allowed
-// Policy 4 - as above, Convert I to i and l to L
-// Policy 5 - as above but lengh 16
 
 // Length is 10 to 16
 static int policy(int len,char *b)
@@ -208,9 +200,9 @@ void PassMan::pw_entered()
     for (int i=0;i<ba.length();i++)
         SHA3_process(&sh,ba[i]);
     SHA3_hash(&sh,ph);
-
+//qDebug() << "1. digestMaster " << (int)(unsigned char)ph[0] << " " << (int)(unsigned char)ph[1] << " " << (int)(unsigned char)ph[2] << "\n";
     for (int i=0;i<HCOUNT;i++) HASH_again(ph);
-
+//qDebug() << "2. digestMaster " << (int)(unsigned char)ph[0] << " " << (int)(unsigned char)ph[1] << " " << (int)(unsigned char)ph[2] << "\n";
     ui->master->clear();
     bold(ui->secret,false);
     ui->master->setDisabled(1);
@@ -242,10 +234,14 @@ void PassMan::service_chosen(int n)
 
     QByteArray ba=chosen.toLatin1();
     SHA3_init(&sh,SHA3_HASH512);
+    //qDebug() << "length= " << ba.length() << "\n";
+    //qDebug() << "ph= " << (int)(unsigned char)ph[0] << " " << (int)(unsigned char)ph[1] << " " << (int)(unsigned char)ph[2] << "\n";
+    //qDebug() << "ba= " << (int)(unsigned char)ba[0] << " " << (int)(unsigned char)ba[1] << " " << (int)(unsigned char)ba[2] << "\n";
     for (i=0;i<ba.length();i++)
         SHA3_process(&sh,ba[i]);
     for (i=0;i<64;i++) SHA3_process(&sh,ph[i]);
     SHA3_hash(&sh,digest);
+//qDebug() << "serviceMaster " << (int)(unsigned char)digest[0] << " " << (int)(unsigned char)digest[1] << " " << (int)(unsigned char)digest[2] << "\n";
     ui->pin->setEnabled(1); // enable PIN entry
     ui->pin->setFocus();
     ui->pin->clear();
@@ -296,6 +292,8 @@ void PassMan::pin_entered(QString text)
 
     if (ui->show->isChecked()) {
         ui->pword->setText(b64);
+    } else {
+        ui->pword->setText("in the clipboard");
     }
 
     // push password onto Clipboard
@@ -517,7 +515,7 @@ void PassMan::reset()
 void PassMan::startup()
 {
 // first set path to writeable storage
-    QString path = QStandardPaths::standardLocations( QStandardPaths::AppLocalDataLocation ).value(0);  // Somewhere local - NOT in the cloud - ***********
+    QString path = QStandardPaths::standardLocations( QStandardPaths::AppDataLocation ).value(0);  // Somewhere local - NOT in the cloud - ***********
 
     QDir myDir(path);
     if (!myDir.exists()) {
